@@ -11,11 +11,11 @@ public class MapActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.map_activity);
+        setContentView(R.layout.activity_map);
     }
 
     public void onClick(View view){
-        Intent intent = new Intent(this,SecondPage.class);
+        Intent intent = new Intent(this, SecondActivity.class);
         startActivity(intent);
     }
 }
