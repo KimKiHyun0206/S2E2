@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="">
+    android:background="@drawable/gradation_pink">
 
     <ProgressBar
         android:id="@+id/progressBar"
