@@ -15,6 +15,9 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class SecondPage extends Activity {
+
+    int lastDay = 5;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +28,9 @@ public class SecondPage extends Activity {
     public void onClick(View view) {
         Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
+    }
+
+    public String getLastDay() {
+        return String.valueOf(lastDay);
     }
 }
