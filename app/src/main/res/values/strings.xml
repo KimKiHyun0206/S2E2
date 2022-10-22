@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">S2E2</string>
+    <string name="app_name">헌혈의 집</string>
+    <string name="count">10</string>
 </resources>
