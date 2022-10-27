@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -30,7 +31,8 @@
                 android:value="" />
         </activity>
 
-        <activity android:name=".SecondActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +43,6 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCNei4jTVZQUoO4oylpKEJyh0maKbY98hw"
-            />
+            android:value="AIzaSyCNei4jTVZQUoO4oylpKEJyh0maKbY98hw" />
     </application>
 </manifest>

@@ -5,12 +5,11 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.content.res.Resources;
 import android.os.Bundle;
-
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -18,29 +17,47 @@ import androidx.annotation.Nullable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SecondActivity extends Activity {
+public class MainActivity extends Activity {
+
+    private int count = 30;
+    private int lastDay = 365;
+    private int passDay = 365;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.avticity_second);
+        setContentView(R.layout.avticity_main);
 
-        getHashKey();
-        Resources res = getResources();
-        TextView textView = findViewById(R.id.bloodView);
+        TextView bloodCountTextView = findViewById(R.id.bloodDonationCountTextView);
 
-        String str = res.getString(R.string.count);
-        textView.setText(str);
+        String str = String.valueOf(count);
+        bloodCountTextView.setText(str);
+
+        Button lastDayButton = findViewById(R.id.lastDayCountButton);
+        lastDayButton.setText(calculateLastDay());
     }
 
+    private String calculateLastDay() {
+        if (lastDay - passDay == 0) {
+            return "D-Day";
+        }
+        return (lastDay - passDay) + "-day";
+    }
 
-
-    public void onClick(View view) {
+    public void goToMapPage(View view) {
         Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
 
-    private void getHashKey(){
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setLastDay(int lastDay) {
+        this.lastDay = lastDay;
+    }
+
+    private void getHashKey() {
         PackageInfo packageInfo = null;
         try {
             packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
