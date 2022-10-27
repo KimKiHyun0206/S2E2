@@ -15,8 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import org.w3c.dom.Text;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -41,6 +39,7 @@ public class SecondActivity extends Activity {
         Intent intent = new Intent(this, MapActivity.class);
         startActivity(intent);
     }
+
     private void getHashKey(){
         PackageInfo packageInfo = null;
         try {

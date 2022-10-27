@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradation_pink"
-    >
-
-    <Button
-        android:id="@+id/returnSecondPage"
-        android:layout_width="298dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#FE2E64"
-        android:onClick="onClick"
-        android:text="돌아가기"
-        android:textSize="60px"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.469"
-        app:layout_constraintStart_toStartOf="parent"
-         />
-
-
-
-
+    tools:context=".MapActivity"
+    android:background="@drawable/gradation_pink">
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        tools:context=".StartPage"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
