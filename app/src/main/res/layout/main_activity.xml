@@ -25,11 +25,11 @@
             app:layout_constraintStart_toStartOf="@+id/newDesignLayOut"
             app:layout_constraintTop_toTopOf="@+id/newDesignLayOut"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/oneColorBlueBackground" />
+            app:srcCompat="@drawable/brown_background" />
 
 
         <TextView
-            android:id="@+id/newDesignBDCountTextView"
+            android:id="@+id/bloodDonationCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="내가 헌혈한 횟수"
@@ -43,7 +43,7 @@
             app:layout_constraintVertical_bias="0.15" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/countBloodView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="152dp"
@@ -54,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newDesignBDCountTextView"
+            app:layout_constraintTop_toBottomOf="@+id/bloodDonationCountTextView"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
@@ -71,7 +71,7 @@
             app:srcCompat="@drawable/middlebackground" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/lastDayTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
@@ -86,7 +86,7 @@
             app:layout_constraintVertical_bias="0.066" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/lastDayCount"
             android:layout_width="112dp"
             android:layout_height="80dp"
             android:gravity="center"
@@ -97,15 +97,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/lastDayTextView"
             app:layout_constraintVertical_bias="0.415" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/lastDayButton"
             android:layout_width="336dp"
             android:layout_height="70dp"
             android:backgroundTint="#815B5B"
-            android:text="D-Day"
+            android:onClick="goToMapPage"
             android:textColor="@color/brown1"
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
