@@ -17,9 +17,11 @@ public class MainActivity extends AppCompatActivity {
     //남은 날
     private int lastDay = 365;
     //헌혈한 날로부터 지난 날
-    private int passDay = 364;
+    private int passDay = 3;
     //true면 메뉴바가 보이고 false면 보이지 않음
     private boolean menuBarOption = true;
+
+    private String lastBloodDonationDay ="2022.2.6";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     //마지막 헌혈한 날짜를 보여주기 위한 메소드
     private String lastBloodDonationDayText(){
-        return "2022.2.6";
+        return lastBloodDonationDay;
     }
 
     //남은 날을 보여주기 위한 메소드

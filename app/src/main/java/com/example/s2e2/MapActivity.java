@@ -3,17 +3,20 @@ package com.example.s2e2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
+import java.io.IOException;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -33,16 +36,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         this.googleMap = googleMap;
+        Context context = this;
+        //LatLng SEOUL = new LatLng(37.56, 126.97);
 
-        LatLng SEOUL = new LatLng(37.56, 126.97);
+        Location bloodDonationHouse = addressToPoint(context);
+        final LatLng house = new LatLng(bloodDonationHouse.getLatitude(), bloodDonationHouse.getLongitude());
 
         MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(SEOUL);
-        markerOptions.title("서울");
-        markerOptions.snippet("한국의 수도");
-        this.googleMap.addMarker(markerOptions);
+        markerOptions.position(house);
+        markerOptions.title("name");
+        googleMap.addMarker(markerOptions);
 
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SEOUL, 15));
     }
 
     //카메라 움직이기
@@ -60,6 +64,26 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             this.googleMap.addMarker(markerOptions);
         }
+    }
+
+    public static Location addressToPoint(Context context) {
+        Location location = new Location("");
+        Geocoder geocoder = new Geocoder(context);
+        List<Address> addresses = null;
+
+        try {
+            addresses = geocoder.getFromLocationName("name", 3);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (addresses != null) {
+            for (int i = 0; i < addresses.size(); i++){
+                Address lating = addresses.get(i);
+                location.setLatitude(lating.getLatitude());
+                location.setLongitude(lating.getLongitude());
+            }
+        }
+        return location;
     }
 
 

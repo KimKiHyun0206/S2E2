@@ -18,6 +18,7 @@
 
         <ImageView
             android:id="@+id/topBackground"
+            android:fontFamily="@font/acc"
             android:layout_width="429dp"
             android:layout_height="544dp"
             android:scaleType="fitXY"
@@ -30,6 +31,7 @@
 
 
         <TextView
+            android:fontFamily="@font/acc"
             android:id="@+id/bloodDonationCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +78,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
+            android:textStyle="normal"
             android:text="남은 날짜"
+            android:fontFamily="@font/acc"
             android:textColor="@color/brown3"
             android:textSize="@android:dimen/app_icon_size"
             app:layout_constraintBottom_toBottomOf="@+id/middleBackground"
@@ -88,6 +92,7 @@
 
         <Button
             android:id="@+id/lastDayButton"
+            android:fontFamily="@font/acc"
             android:layout_width="267dp"
             android:layout_height="135dp"
             android:backgroundTint="#815B5B"
@@ -105,10 +110,11 @@
         <RelativeLayout
 
             android:id="@+id/menuBar"
+
             android:layout_width="320dp"
             android:layout_height="905dp"
             android:background="@color/brown2"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -132,6 +138,7 @@
                     android:layout_height="61dp"
                     android:gravity="center"
                     android:text="메뉴바"
+                    android:fontFamily="@font/acc"
                     android:textColor="@color/brown1"
                     android:textSize="@android:dimen/app_icon_size"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -149,10 +156,11 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="92dp"
-                android:layout_marginEnd="-3dp"
-                android:layout_marginBottom="752dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="113dp"
+                android:layout_marginEnd="-4dp"
+                android:layout_marginBottom="731dp"
+                android:fontFamily="@font/acc"
                 android:text="마지막 헌혈한 날짜"
                 android:textColor="@color/brown1"
                 android:textSize="50px" />
@@ -168,6 +176,7 @@
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="706dp"
                 android:text="2022.8.16"
+                android:fontFamily="@font/acc"
                 android:textColor="@color/brown1"
                 android:textSize="60px" />
 

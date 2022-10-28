@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/brown3"
             android:textColor="@color/brown1"
+            android:fontFamily="@font/acc"
             android:onClick="goToMainPage"
             android:text="메인으로" />
 
@@ -49,6 +50,7 @@
             android:backgroundTint="@color/brown4"
             android:textColor="@color/brown1"
             android:onClick="completeAndGoTOMainPage"
+            android:fontFamily="@font/acc"
             android:text="완료하기" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
