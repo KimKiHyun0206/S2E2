@@ -3,7 +3,6 @@ package com.example.s2e2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -48,15 +46,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     //카메라 움직이기
-    private void movingCamera(LatLng latLng){
-        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,20));
+    private void movingCamera(LatLng latLng) {
+        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
     }
 
     //데베에서 받아온 위치를 모두 처리하기기
-   private void bloodDonationHouseList(List<BloodDonationHousePosition> bloodDonationHousePositions) {
+    private void bloodDonationHouseList(List<BloodDonationHousePosition> bloodDonationHousePositions) {
         for (int i = 0; i < bloodDonationHousePositions.size(); i++) {
             MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(new LatLng(bloodDonationHousePositions.get(i).getLatitude(),bloodDonationHousePositions.get(i).getLongitude()));
+            markerOptions.position(new LatLng(bloodDonationHousePositions.get(i).getLatitude(), bloodDonationHousePositions.get(i).getLongitude()));
             markerOptions.title(bloodDonationHousePositions.get(i).getName());
             markerOptions.snippet("헌혈의 집");
 
@@ -70,12 +68,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onPointerCaptureChanged(hasCapture);
     }
 
+    //화면 이동 메소드 - 메인페이지로
     public void goToMainPage(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
-    public void completeAndGoTOMainPage(View view){
+    //화면 이동 메소드 - 메인페지이로, 헌혈횟수를 1 증가시킨다.
+    public void completeAndGoTOMainPage(View view) {
         MainActivity.increaseCountBloodDonation();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

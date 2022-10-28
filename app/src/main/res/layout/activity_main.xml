@@ -17,7 +17,7 @@
         app:layout_constraintVertical_bias="1.0">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/topBackground"
             android:layout_width="429dp"
             android:layout_height="544dp"
             android:scaleType="fitXY"
@@ -36,11 +36,11 @@
             android:text="내가 헌혈한 횟수"
             android:textColor="#FFF8EA"
             android:textSize="@android:dimen/app_icon_size"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/topBackground"
+            app:layout_constraintEnd_toEndOf="@+id/topBackground"
             app:layout_constraintHorizontal_bias="0.51"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/topBackground"
+            app:layout_constraintTop_toTopOf="@+id/topBackground"
             app:layout_constraintVertical_bias="0.237" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:text="30"
             android:textColor="#FFF8EA"
             android:textSize="@android:dimen/app_icon_size"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/topBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/middleBackground"
             android:layout_width="329dp"
             android:layout_height="343dp"
             android:scaleType="fitXY"
@@ -79,32 +79,17 @@
             android:text="남은 날짜"
             android:textColor="@color/brown3"
             android:textSize="@android:dimen/app_icon_size"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toTopOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="0.066" />
-
-        <TextView
-            android:id="@+id/lastDayCount"
-            android:layout_width="112dp"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="30"
-            android:textColor="@color/brown3"
-            android:textSize="@android:dimen/app_icon_size"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lastDayTextView"
-            app:layout_constraintVertical_bias="0.415" />
+            app:layout_constraintBottom_toBottomOf="@+id/middleBackground"
+            app:layout_constraintEnd_toEndOf="@+id/middleBackground"
+            app:layout_constraintHorizontal_bias="0.536"
+            app:layout_constraintStart_toStartOf="@+id/middleBackground"
+            app:layout_constraintTop_toTopOf="@+id/middleBackground"
+            app:layout_constraintVertical_bias="0.136" />
 
         <Button
             android:id="@+id/lastDayButton"
-            android:layout_width="336dp"
-            android:layout_height="70dp"
+            android:layout_width="267dp"
+            android:layout_height="135dp"
             android:backgroundTint="#815B5B"
             android:focusable="auto"
             android:onClick="goToMapPage"
@@ -112,14 +97,16 @@
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toTopOf="@+id/middleBackground"
+            app:layout_constraintVertical_bias="0.447" />
 
         <RelativeLayout
 
             android:id="@+id/menuBar"
-            android:layout_width="309dp"
-            android:layout_height="890dp"
+            android:layout_width="320dp"
+            android:layout_height="905dp"
             android:background="@color/brown2"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +114,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

@@ -12,16 +12,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    //현재 내가 헌혈한 횟수
     private static int countBloodDonation = 30;
+    //남은 날
     private int lastDay = 365;
-    private int passDay = 365;
-
-    private NotificationHelper notificationHelper;
+    //헌혈한 날로부터 지난 날
+    private int passDay = 364;
+    //true면 메뉴바가 보이고 false면 보이지 않음
+    private boolean menuBarOption = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.activity_main);
 
         TextView bloodCountTextView = findViewById(R.id.countBloodView);
 
@@ -33,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         TextView lastBloodDonationDay = findViewById(R.id.lastBloodDonationDayTextView);
         lastBloodDonationDay.setText(lastBloodDonationDayText());
-
     }
 
+
+    //마지막 헌혈한 날짜를 보여주기 위한 메소드
     private String lastBloodDonationDayText(){
         return "2022.2.6";
     }
 
+    //남은 날을 보여주기 위한 메소드
     private String calculateLastDay() {
         if (lastDay - passDay == 0) {
             return "D-Day";
@@ -47,20 +52,15 @@ public class MainActivity extends AppCompatActivity {
         return (lastDay - passDay) + "-day";
     }
 
+    //화면 이동 메소드 - 지도 페이지
     public void goToMapPage(View view) {
-        Intent intent = new Intent(this, MapActivity.class);
-        startActivity(intent);
+        if(lastDay-passDay<=0){
+            Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        }
     }
 
-    public void setCount(int count) {
-        this.countBloodDonation = count;
-    }
-
-    public void setLastDay(int lastDay) {
-        this.lastDay = lastDay;
-    }
-
-    private boolean menuBarOption = true;
+    //메뉴바를 보이게 하는 메소드
     public void showMenuBar(View view) {
         Button lastDayButton = findViewById(R.id.lastDayButton);
         RelativeLayout relativeLayout = findViewById(R.id.menuBar);
@@ -75,11 +75,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //헌혈 횟수를 증가시키기 위한 메소드
     static public void increaseCountBloodDonation(){
         countBloodDonation++;
-    }
-
-    public int getCountBloodDonation() {
-        return countBloodDonation;
     }
 }
