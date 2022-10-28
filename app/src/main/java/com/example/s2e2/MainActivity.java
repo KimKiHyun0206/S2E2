@@ -1,26 +1,18 @@
 package com.example.s2e2;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int count = 30;
+    private static int countBloodDonation = 30;
     private int lastDay = 365;
     private int passDay = 365;
 
@@ -33,12 +25,19 @@ public class MainActivity extends AppCompatActivity {
 
         TextView bloodCountTextView = findViewById(R.id.countBloodView);
 
-        String str = String.valueOf(count);
+        String str = String.valueOf(countBloodDonation);
         bloodCountTextView.setText(str);
 
         Button lastDayButton = findViewById(R.id.lastDayButton);
         lastDayButton.setText(calculateLastDay());
 
+        TextView lastBloodDonationDay = findViewById(R.id.lastBloodDonationDayTextView);
+        lastBloodDonationDay.setText(lastBloodDonationDayText());
+
+    }
+
+    private String lastBloodDonationDayText(){
+        return "2022.2.6";
     }
 
     private String calculateLastDay() {
@@ -54,31 +53,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setCount(int count) {
-        this.count = count;
+        this.countBloodDonation = count;
     }
 
     public void setLastDay(int lastDay) {
         this.lastDay = lastDay;
     }
 
-    private void getHashKey() {
-        PackageInfo packageInfo = null;
-        try {
-            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+    private boolean menuBarOption = true;
+    public void showMenuBar(View view) {
+        Button lastDayButton = findViewById(R.id.lastDayButton);
+        RelativeLayout relativeLayout = findViewById(R.id.menuBar);
+        if (menuBarOption) {
+            relativeLayout.setVisibility(View.VISIBLE);
+            lastDayButton.setVisibility(View.GONE);
+            menuBarOption = false;
+        } else{
+            relativeLayout.setVisibility(View.GONE);
+            lastDayButton.setVisibility(View.VISIBLE);
+            menuBarOption = true;
         }
-        if (packageInfo == null)
-            Log.e("KeyHash", "KeyHash:null");
+    }
 
-        for (Signature signature : packageInfo.signatures) {
-            try {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            } catch (NoSuchAlgorithmException e) {
-                Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
-            }
-        }
+    static public void increaseCountBloodDonation(){
+        countBloodDonation++;
+    }
+
+    public int getCountBloodDonation() {
+        return countBloodDonation;
     }
 }

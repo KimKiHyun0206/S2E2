@@ -21,7 +21,6 @@ import java.util.List;
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap googleMap;
-    MyPosition myPosition = new MyPosition();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +71,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     public void goToMainPage(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void completeAndGoTOMainPage(View view){
+        MainActivity.increaseCountBloodDonation();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

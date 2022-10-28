@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/newDesignLayOut"
-        android:layout_width="409dp"
-        android:layout_height="889dp"
+        android:layout_width="416dp"
+        android:layout_height="897dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,10 +38,10 @@
             android:textSize="@android:dimen/app_icon_size"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintHorizontal_bias="0.51"
             app:layout_constraintStart_toStartOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.15" />
+            app:layout_constraintVertical_bias="0.237" />
 
         <TextView
             android:id="@+id/countBloodView"
@@ -105,6 +106,7 @@
             android:layout_width="336dp"
             android:layout_height="70dp"
             android:backgroundTint="#815B5B"
+            android:focusable="auto"
             android:onClick="goToMapPage"
             android:textColor="@color/brown1"
             android:textSize="30dp"
@@ -112,5 +114,92 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <RelativeLayout
+
+            android:id="@+id/menuBar"
+            android:layout_width="309dp"
+            android:layout_height="890dp"
+            android:background="@color/brown2"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="796dp"
+                android:background="@color/brown4">
+
+                <TextView
+                    android:layout_width="255dp"
+                    android:layout_height="61dp"
+                    android:gravity="center"
+                    android:text="메뉴바"
+                    android:textColor="@color/brown1"
+                    android:textSize="@android:dimen/app_icon_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.567"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.448" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="286dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="92dp"
+                android:layout_marginEnd="-3dp"
+                android:layout_marginBottom="752dp"
+                android:text="마지막 헌혈한 날짜"
+                android:textColor="@color/brown1"
+                android:textSize="50px" />
+
+            <TextView
+                android:id="@+id/lastBloodDonationDayTextView"
+                android:layout_width="281dp"
+                android:layout_height="45dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="706dp"
+                android:text="2022.8.16"
+                android:textColor="@color/brown1"
+                android:textSize="60px" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/menuBarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/brown4"
+            android:onClick="showMenuBar"
+            android:text="메뉴바"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.055" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

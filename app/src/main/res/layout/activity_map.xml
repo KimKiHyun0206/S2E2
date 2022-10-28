@@ -48,6 +48,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/brown4"
             android:textColor="@color/brown1"
+            android:onClick="completeAndGoTOMainPage"
             android:text="완료하기" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
