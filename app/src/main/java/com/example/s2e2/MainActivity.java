@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     //남은 날
     private int lastDay = 365;
     //헌혈한 날로부터 지난 날
-    private int passDay = 3;
+    private int passDay = 365;
     //true면 메뉴바가 보이고 false면 보이지 않음
     private boolean menuBarOption = true;
 
