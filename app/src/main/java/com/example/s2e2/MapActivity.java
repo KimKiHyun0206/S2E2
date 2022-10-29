@@ -384,25 +384,7 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
     }
 
 
-    public static Location addressToPoint(Context context) {
-        Location location = new Location("");
-        Geocoder geocoder = new Geocoder(context);
-        List<Address> addresses = null;
 
-        try {
-            addresses = geocoder.getFromLocationName("name", 3);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (addresses != null) {
-            for (int i = 0; i < addresses.size(); i++){
-                Address lating = addresses.get(i);
-                location.setLatitude(lating.getLatitude());
-                location.setLongitude(lating.getLongitude());
-            }
-        }
-        return location;
-    }
 
 
     @Override
