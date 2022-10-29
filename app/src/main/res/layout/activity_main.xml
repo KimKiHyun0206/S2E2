@@ -1,222 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/newDesignLayOut"
-        android:layout_width="416dp"
-        android:layout_height="897dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/topBackground"
-            android:layout_width="429dp"
-            android:layout_height="544dp"
-            android:fontFamily="@font/acc"
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="518dp"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="@+id/newDesignLayOut"
-            app:layout_constraintEnd_toEndOf="@+id/newDesignLayOut"
-            app:layout_constraintStart_toStartOf="@+id/newDesignLayOut"
-            app:layout_constraintTop_toTopOf="@+id/newDesignLayOut"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/brown_background" />
-
-
-        <TextView
-            android:id="@+id/bloodDonationCountTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/acc"
-            android:text="내가 헌혈한 횟수"
-            android:textColor="#FFF8EA"
-            android:textSize="@android:dimen/app_icon_size"
-            app:layout_constraintBottom_toBottomOf="@+id/topBackground"
-            app:layout_constraintEnd_toEndOf="@+id/topBackground"
-            app:layout_constraintStart_toStartOf="@+id/topBackground"
-            app:layout_constraintTop_toTopOf="@+id/topBackground"
-            app:layout_constraintVertical_bias="0.266" />
-
-        <TextView
-            android:id="@+id/countBloodView"
-            android:layout_width="201dp"
-            android:layout_height="155dp"
-            android:gravity="center"
-            android:fontFamily="@font/acc"
-            android:text="30"
-            android:textColor="#FFF8EA"
-            android:textSize="45pt"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="0pt"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bloodDonationCountTextView"
-            app:layout_constraintVertical_bias="0.069" />
-
-        <ImageView
-            android:id="@+id/middleBackground"
-            android:layout_width="329dp"
-            android:layout_height="343dp"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.462"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.758"
-            app:srcCompat="@drawable/middlebackground" />
+            app:srcCompat="@drawable/short_edge" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="278dp"
+            android:layout_height="252dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/countBloodDonationTextview"
+            app:srcCompat="@drawable/middlebackground"
+            tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/lastDayTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="2dp"
             android:fontFamily="@font/acc"
-            android:text="남은 날짜"
-            android:textColor="@color/brown3"
+            android:id="@+id/textView3"
+            android:textColor="@color/brown1"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_marginTop="92dp"
+            android:gravity="center"
+            android:text="헌혈 횟수"
             android:textSize="@android:dimen/app_icon_size"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="@+id/middleBackground"
-            app:layout_constraintEnd_toEndOf="@+id/middleBackground"
-            app:layout_constraintHorizontal_bias="0.533"
-            app:layout_constraintStart_toStartOf="@+id/middleBackground"
-            app:layout_constraintTop_toTopOf="@+id/middleBackground"
-            app:layout_constraintVertical_bias="0.117" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+        <TextView
+            android:fontFamily="@font/acc"
+            android:id="@+id/countBloodDonationTextview"
+            android:layout_width="293dp"
+            android:textColor="@color/brown1"
+            android:layout_height="199dp"
+            android:gravity="center"
+            android:textSize="@android:dimen/notification_large_icon_width"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:fontFamily="@font/acc"
+            android:id="@+id/textView5"
+            android:textColor="@color/brown4"
+            android:layout_width="258dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="94dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="68dp"
+            android:gravity="center"
+            android:text="앞으로 남은 날짜"
+            android:textSize="75px"
+            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+            app:layout_constraintHorizontal_bias="0.598"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
         <Button
-            android:id="@+id/lastDayButton"
-            android:layout_width="267dp"
-            android:layout_height="135dp"
-            android:backgroundTint="#815B5B"
-            android:focusable="auto"
             android:fontFamily="@font/acc"
-            android:onClick="goToMapPage"
+            android:id="@+id/countLastDayButton"
             android:textColor="@color/brown1"
-            android:textSize="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="237dp"
+            android:layout_height="83dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="68dp"
+            android:backgroundTint="@color/brown4"
+            android:onClick="goToMapPage"
+            android:text="D-Day"
+            android:textSize="@android:dimen/app_icon_size"
+            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+            app:layout_constraintHorizontal_bias="0.671"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <ImageView
+            android:id="@+id/sideMenuBarIcon"
+            android:layout_width="49dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="showMenuBar"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/middleBackground"
-            app:layout_constraintVertical_bias="0.447" />
+            app:srcCompat="@android:drawable/ic_dialog_dialer" />
 
-        <RelativeLayout
-
-            android:id="@+id/menuBar"
-
-            android:layout_width="320dp"
-            android:layout_height="905dp"
+        <ScrollView
+            android:id="@+id/scrollBar"
+            android:layout_width="216dp"
+            android:layout_height="match_parent"
             android:background="@color/brown2"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="796dp"
-                android:background="@color/brown4">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="255dp"
-                    android:layout_height="61dp"
                     android:fontFamily="@font/acc"
-                    android:gravity="center"
-                    android:text="메뉴바"
                     android:textColor="@color/brown1"
-                    android:textSize="@android:dimen/app_icon_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.567"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.448" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:background="@color/brown3"
+                    android:gravity="center"
+                    android:text="기타 사항"
+                    android:textSize="@android:dimen/app_icon_size" />
 
-            <TextView
-                android:layout_width="286dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="117dp"
-                android:layout_marginEnd="-15dp"
-                android:layout_marginBottom="727dp"
-                android:fontFamily="@font/acc"
-                android:text="마지막 헌혈한 날짜"
-                android:textColor="@color/brown1"
-                android:textSize="50px" />
+                <TextView
+                    android:fontFamily="@font/acc"
+                    android:id="@+id/textView7"
+                    android:textColor="@color/brown1"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="마지막 헌혈한 날짜" />
 
-            <TextView
-                android:id="@+id/lastBloodDonationDayTextView"
-                android:layout_width="281dp"
-                android:layout_height="45dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="22dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="-10dp"
-                android:layout_marginBottom="682dp"
-                android:fontFamily="@font/acc"
-                android:text="2022.8.16"
-                android:textColor="@color/brown1"
-                android:textSize="60px" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:fontFamily="@font/acc"
-                android:layout_width="268dp"
-                android:textSize="50px"
-                android:textColor="@color/brown1"
-                android:layout_height="48dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginBottom="13dp"
-                android:text="폰트 : ACC어린이마음고운체" />
-
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="showMenuBar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.937"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/topBackground"
-            app:layout_constraintVertical_bias="0.073"
-            app:srcCompat="@android:drawable/ic_dialog_dialer" />
-
+                <TextView
+                    android:fontFamily="@font/acc"
+                    android:id="@+id/lastBloodDonationDay"
+                    android:textColor="@color/brown1"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+            </LinearLayout>
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

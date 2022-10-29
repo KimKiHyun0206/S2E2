@@ -322,7 +322,7 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, REQUIRED_PERMISSIONS[0]) || ActivityCompat.shouldShowRequestPermissionRationale(this, REQUIRED_PERMISSIONS[1])) {
                     //사용자가 거부만 선택한 경우에는 앱을 다시 실행하여 허용을 선택하면 앱을 사용할 수 있다.
 
-                    Snackbar.make(mLayout, "퍼미션이 거부되었씁니다. 앱을 다시 실행하여 퍼미션을 하영해주세요",
+                    Snackbar.make(mLayout, "퍼미션이 거부되었습니다. 앱을 다시 실행하여 퍼미션을 허용해주세요",
                             Snackbar.LENGTH_INDEFINITE).setAction("확인", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -383,17 +383,6 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
         }
     }
 
-    //데베에서 받아온 위치를 모두 처리하기기
-    private void bloodDonationHouseList(List<BloodDonationHousePosition> bloodDonationHousePositions) {
-        for (int i = 0; i < bloodDonationHousePositions.size(); i++) {
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(new LatLng(bloodDonationHousePositions.get(i).getLatitude(), bloodDonationHousePositions.get(i).getLongitude()));
-            markerOptions.title(bloodDonationHousePositions.get(i).getName());
-            markerOptions.snippet("헌혈의 집");
-
-            this.mMap.addMarker(markerOptions);
-        }
-    }
 
     public static Location addressToPoint(Context context) {
         Location location = new Location("");
@@ -429,7 +418,6 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
 
     //화면 이동 메소드 - 메인페지이로, 헌혈횟수를 1 증가시킨다.
     public void completeAndGoTOMainPage(View view) {
-        MainActivity.increaseCountBloodDonation();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

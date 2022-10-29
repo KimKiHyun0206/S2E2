@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
+    <supports-screens android:largeScreens="true" android:anyDensity="true"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -45,12 +45,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCNei4jTVZQUoO4oylpKEJyh0maKbY98hw" />
-
-        <activity
-            android:name=".MyPosition"
-            android:exported="true">
-        </activity>
-
+        <meta-data android:name="android.max_aspect" android:value="2.1" />
 
 
     </application>

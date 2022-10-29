@@ -19,41 +19,63 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="713dp">
+            android:layout_height="559dp">
             <fragment
                 android:id="@+id/map"
                 android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".StartPage" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="366dp"
+                android:layout_height="520dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/toMain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/brown3"
-            android:textColor="@color/brown1"
-            android:fontFamily="@font/acc"
-            android:textSize="@android:dimen/app_icon_size"
-            android:onClick="goToMainPage"
-            android:text="메인으로" />
-
-        <Button
-            android:id="@+id/Complete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/brown4"
-            android:textColor="@color/brown1"
-            android:onClick="completeAndGoTOMainPage"
-            android:textSize="@android:dimen/app_icon_size"
-            android:fontFamily="@font/acc"
-            android:text="완료하기" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="407dp"
+                android:layout_height="196dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp">
+
+                <Button
+                    android:id="@+id/toMain"
+                    android:layout_width="366dp"
+                    android:layout_height="66dp"
+                    android:backgroundTint="@color/brown3"
+                    android:fontFamily="@font/acc"
+                    android:onClick="goToMainPage"
+                    android:text="메인으로"
+                    android:textColor="@color/brown1"
+                    android:textSize="70px"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/Complete"
+                    android:layout_width="366dp"
+                    android:layout_height="66dp"
+                    android:backgroundTint="@color/brown4"
+                    android:fontFamily="@font/acc"
+                    android:onClick="completeAndGoTOMainPage"
+                    android:text="완료하기"
+                    android:textColor="@color/brown1"
+                    android:textSize="70px"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toMain" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
