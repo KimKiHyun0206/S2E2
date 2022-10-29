@@ -45,6 +45,14 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCNei4jTVZQUoO4oylpKEJyh0maKbY98hw" />
+
+        <activity
+            android:name=".MyPosition"
+            android:exported="true">
+        </activity>
+
+
+
     </application>
 
 </manifest>
