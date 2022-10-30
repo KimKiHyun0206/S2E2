@@ -400,4 +400,16 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    private void bloodHouseMarker(String name, long latitude, long longitude){
+        LatLng latLng = new LatLng(latitude,longitude);
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title(name);
+        markerOptions.snippet("헌혈의집");
+        markerOptions.draggable(true);
+    }
+
+    
 }
