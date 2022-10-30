@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -44,7 +45,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
+public class Sample extends AppCompatActivity  implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback{
 
     private GoogleMap mMap;
     private Marker currentMarker;
@@ -92,9 +93,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//        .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
+  //      SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+ //               .findFragmentById(R.id.map);
+  //      mapFragment.getMapAsync(this);
     }
 
 
@@ -117,7 +118,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Snackbar.make(mLayout, "접근 권한이 필요합니다", Snackbar.LENGTH_INDEFINITE).setAction("확인", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        ActivityCompat.requestPermissions(MapActivity.this, REQUIRED_PERMISSIONS, PERMISSION_REQUEST_CODE);
+                        ActivityCompat.requestPermissions(Sample.this, REQUIRED_PERMISSIONS, PERMISSION_REQUEST_CODE);
                     }
                 }).show();
             } else {
@@ -343,7 +344,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     //여기서부터는 GPS  확성화를 위한 메소드
     private void showDialogForLocationServiceSetting() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MapActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Sample.this);
         builder.setTitle("위치 서비스 비활성화");
         builder.setMessage("앱을 사용하기 위해서는 위치 서비스가 필요합니다. \n 위치 설정을 수정하시겠습니까?");
         builder.setCancelable(true);
@@ -383,6 +384,27 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
 
+    public static Location addressToPoint(Context context) {
+        Location location = new Location("");
+        Geocoder geocoder = new Geocoder(context);
+        List<Address> addresses = null;
+
+        try {
+            addresses = geocoder.getFromLocationName("name", 3);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (addresses != null) {
+            for (int i = 0; i < addresses.size(); i++){
+                Address lating = addresses.get(i);
+                location.setLatitude(lating.getLatitude());
+                location.setLongitude(lating.getLongitude());
+            }
+        }
+        return location;
+    }
+
+
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
@@ -399,16 +421,4 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-    private void bloodHouseMarker(String name, long latitude, long longitude) {
-        LatLng latLng = new LatLng(latitude, longitude);
-
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title(name);
-        markerOptions.snippet("헌혈의집");
-        markerOptions.draggable(true);
-    }
-
-
 }

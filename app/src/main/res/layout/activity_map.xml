@@ -26,10 +26,17 @@
                 android:layout_height="602dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.366"
+                app:layout_constraintHorizontal_bias="0.432"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.628">
+                app:layout_constraintVertical_bias="0.612">
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context=".StartPage" />
 
                 <Button
                     android:id="@+id/toMain"
@@ -64,6 +71,5 @@
                     app:layout_constraintTop_toBottomOf="@+id/toMain" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
