@@ -1,21 +1,22 @@
 package com.example.s2e2.retrofit;
 
+import com.example.s2e2.retrofit.Service.RetrofitService;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
     private static RetrofitClient instance = null;
-    private static RetrofitAPI retrofitAPI;
+    private static RetrofitService retrofitService;
 
-    private final static String BASE_URL = "";
+    private final static String BASE_URL = "http://43.200.85.14:8080/";
 
     private RetrofitClient() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        retrofitAPI = retrofit.create(RetrofitAPI.class);
+        retrofitService = retrofit.create(RetrofitService.class);
     }
 
     public static RetrofitClient getInstance() {
@@ -25,8 +26,8 @@ public class RetrofitClient {
         return instance;
     }
 
-    public static RetrofitAPI getRetrofitAPI(){
-        return retrofitAPI;
+    public static RetrofitService getRetrofitService(){
+        return retrofitService;
     }
 
 }

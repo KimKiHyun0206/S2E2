@@ -2,6 +2,7 @@ package com.example.s2e2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
@@ -9,27 +10,57 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.s2e2.retrofit.Service.RetrofitService;
+import com.example.s2e2.retrofit.RetrofitClient;
+import com.example.s2e2.retrofit.domain.BloodDonation;
+import org.jetbrains.annotations.NotNull;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     //현재 내가 헌혈한 횟수
-    private int countBloodDonationData = 30;
-    //남은 날
-    private int lastDayData = 365;
-    //헌혈한 날로부터 지난 날
-    private int passDayData = 36;
+    private int blood_Donation_Count;
+    //헌혈 가능일까지 남은 날짜
+    private int blood_Donation_Available_Date;
     //true면 메뉴바가 보이고 false면 보이지 않음
     private boolean menuBarOption = true;
     //마지막 헌혈한 날짜가 언제인지 저장하는 변수
-    private String lastBloodDonationDayData = "2022.2.6";
+    private String blood_Donation_Date;
 
-
+    private RetrofitClient retrofitClient;
+    private RetrofitService retrofitService;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        retrofitClient = RetrofitClient.getInstance();
+        retrofitService = RetrofitClient.getRetrofitService();
+        
+        Call<BloodDonation> call = retrofitService.getBloodDonation(1L);
+        
+        call.enqueue(new Callback<BloodDonation>() {
+            @Override
+            public void onResponse(@NotNull Call<BloodDonation> call, @NotNull Response<BloodDonation> response) {
+                if (response.isSuccessful()) {
+                    BloodDonation body = response.body();
+                    Log.d("TEST","GET 성공성공");
+                    Log.d("TEST", body.toString());
+                    blood_Donation_Count = body.getBlood_Donation_Count();
+                    blood_Donation_Date = String.valueOf(body.getBlood_Donation_Date());
+                    blood_Donation_Available_Date = body.getBlood_Donation_Available_Date();
+                }
+            }
+            @Override
+            public void onFailure(Call<BloodDonation> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
         Button dDayButton = findViewById(R.id.countLastDayButton);
 
@@ -39,37 +70,29 @@ public class MainActivity extends AppCompatActivity {
 
         dDayButton.setText(dDayButtonShow());
         lastBloodDonationDay.setText(getLastBloodDonationDay());
-        countBloodDonation.setText(String.valueOf(countBloodDonationData));
-
+        countBloodDonation.setText(String.valueOf(blood_Donation_Count));
 
     }
 
     private String dDayButtonShow(){
-        if(lastDayData - passDayData <=0){
+        if(blood_Donation_Available_Date <=0){
             return "D-Day";
         }
-        return lastDayData - passDayData +"-Day";
+        return blood_Donation_Available_Date +"-Day";
     }
 
     private String getLastBloodDonationDay(){
-        return lastBloodDonationDayData;
+        return blood_Donation_Date;
     }
 
-    public int getCountBloodDonationData() {
-        return countBloodDonationData;
+    public int getBlood_Donation_Count() {
+        return blood_Donation_Count;
     }
 
-    //남은 날을 보여주기 위한 메소드
-    private String calculateLastDay() {
-        if (lastDayData - passDayData == 0) {
-            return "D-Day";
-        }
-        return (lastDayData - passDayData) + "-day";
-    }
 
     //화면 이동 메소드 - 지도 페이지
     public void goToMapPage(View view) {
-        if(lastDayData - passDayData <=0){
+        if(blood_Donation_Available_Date <=0){
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         }

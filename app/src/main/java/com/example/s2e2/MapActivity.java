@@ -384,9 +384,6 @@ public class MapActivity extends AppCompatActivity  implements OnMapReadyCallbac
     }
 
 
-
-
-
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);

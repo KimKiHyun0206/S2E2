@@ -13,7 +13,7 @@ public class BloodDonationHouseDTO {
     private String name;
 
     @Expose
-    @SerializedName("streeteNameAddress")
+    @SerializedName("streetNameAddress")
     private String streetNameAddress;
 
     @Override
