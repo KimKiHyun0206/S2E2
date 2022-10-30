@@ -8,12 +8,17 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.LongDef;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.s2e2.retrofit.Service.RetrofitService;
 import com.example.s2e2.retrofit.RetrofitClient;
 import com.example.s2e2.retrofit.domain.BloodDonation;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDateTime;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     BloodDonation body = response.body();
                     Log.d("TEST","GET 성공성공");
-                    blood_Donation_Count[0] = body.getBlood_Donation_Count();
-                    blood_Donation_Date[0] = String.valueOf(body.getBlood_Donation_Date());
-                    blood_Donation_Available_Date[0] = body.getBlood_Donation_Available_Date();
+                    Log.d("TEST", response.body().toString());
+                    blood_Donation_Count[0] = response.body().getCount();
+                    blood_Donation_Available_Date[0] = response.body().getAvailableDate();
+                    blood_Donation_Date[0] = response.body().getDate();
                 }
             }
             @Override
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         TextView countBloodDonation = findViewById(R.id.countBloodDonationTextview);
 
         dDayButton.setText(dDayButtonShow(blood_Donation_Available_Date[0]));
-        lastBloodDonationDay.setText(blood_Donation_Date[0]);
+        lastBloodDonationDay.setText(String.valueOf(blood_Donation_Date[0]));
         countBloodDonation.setText(String.valueOf(blood_Donation_Count[0]));
 
     }

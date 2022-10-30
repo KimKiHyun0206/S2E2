@@ -3,6 +3,7 @@ package com.example.s2e2.retrofit.Service;
 import com.example.s2e2.retrofit.domain.BloodDonation;
 import com.example.s2e2.retrofit.domain.BloodDonationHouse;
 
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

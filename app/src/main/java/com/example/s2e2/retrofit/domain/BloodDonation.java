@@ -11,16 +11,16 @@ public class BloodDonation {
     private Long id;
 
     @Expose
-    @SerializedName("blood_Donation_Count")
-    private int blood_Donation_Count;
+    @SerializedName("count")
+    private int count;
 
     @Expose
-    @SerializedName("blood_Donation_Date")
-    private LocalDateTime blood_Donation_Date;
+    @SerializedName("date")
+    private String  date;
 
     @Expose
-    @SerializedName("blood_Donation_Available_Date")
-    private int blood_Donation_Available_Date;
+    @SerializedName("availableDate")
+    private int availableDate;
 
     public Long getId() {
         return id;
@@ -30,37 +30,37 @@ public class BloodDonation {
         this.id = id;
     }
 
-    public int getBlood_Donation_Count() {
-        return blood_Donation_Count;
-    }
-
-    public void setBlood_Donation_Count(int blood_Donation_Count) {
-        this.blood_Donation_Count = blood_Donation_Count;
-    }
-
-    public LocalDateTime getBlood_Donation_Date() {
-        return blood_Donation_Date;
-    }
-
-    public void setBlood_Donation_Date(LocalDateTime blood_Donation_Date) {
-        this.blood_Donation_Date = blood_Donation_Date;
-    }
-
-    public int getBlood_Donation_Available_Date() {
-        return blood_Donation_Available_Date;
-    }
-
-    public void setBlood_Donation_Available_Date(int blood_Donation_Available_Date) {
-        this.blood_Donation_Available_Date = blood_Donation_Available_Date;
-    }
-
     @Override
     public String toString() {
         return "BloodDonation{" +
                 "id=" + id +
-                ", blood_Donation_Count=" + blood_Donation_Count +
-                ", blood_Donation_Date=" + blood_Donation_Date +
-                ", blood_Donation_Available_Date=" + blood_Donation_Available_Date +
+                ", count=" + count +
+                ", date=" + date +
+                ", availableDate=" + availableDate +
                 '}';
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getAvailableDate() {
+        return availableDate;
+    }
+
+    public void setAvailableDate(int availableDate) {
+        this.availableDate = availableDate;
     }
 }

@@ -16,7 +16,7 @@ public class BloodDonationDTO {
 
     @Expose
     @SerializedName("blood_Donation_Date")
-    private LocalDateTime blood_Donation_Date;
+    private String blood_Donation_Date;
 
     @Expose
     @SerializedName("blood_Donation_Available_Date")
@@ -38,11 +38,11 @@ public class BloodDonationDTO {
         this.blood_Donation_Count = blood_Donation_Count;
     }
 
-    public LocalDateTime getBlood_Donation_Date() {
+    public String getBlood_Donation_Date() {
         return blood_Donation_Date;
     }
 
-    public void setBlood_Donation_Date(LocalDateTime blood_Donation_Date) {
+    public void setBlood_Donation_Date(String blood_Donation_Date) {
         this.blood_Donation_Date = blood_Donation_Date;
     }
 
