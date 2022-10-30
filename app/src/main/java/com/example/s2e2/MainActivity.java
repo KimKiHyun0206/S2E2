@@ -61,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
                     blood_Donation_Count[0] = response.body().getCount();
                     blood_Donation_Available_Date[0] = response.body().getAvailableDate();
                     blood_Donation_Date[0] = response.body().getDate();
+
+                    Button dDayButton = findViewById(R.id.countLastDayButton);
+
+                    TextView lastBloodDonationDay = findViewById(R.id.lastBloodDonationDay);
+
+                    TextView countBloodDonation = findViewById(R.id.countBloodDonationTextview);
+
+                    dDayButton.setText(dDayButtonShow(blood_Donation_Available_Date[0]));
+                    lastBloodDonationDay.setText(String.valueOf(blood_Donation_Date[0]));
+                    countBloodDonation.setText(String.valueOf(blood_Donation_Count[0]));
+
                 }
             }
             @Override
@@ -69,15 +80,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button dDayButton = findViewById(R.id.countLastDayButton);
-
-        TextView lastBloodDonationDay = findViewById(R.id.lastBloodDonationDay);
-
-        TextView countBloodDonation = findViewById(R.id.countBloodDonationTextview);
-
-        dDayButton.setText(dDayButtonShow(blood_Donation_Available_Date[0]));
-        lastBloodDonationDay.setText(String.valueOf(blood_Donation_Date[0]));
-        countBloodDonation.setText(String.valueOf(blood_Donation_Count[0]));
 
     }
 
