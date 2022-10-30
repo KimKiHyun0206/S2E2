@@ -9,7 +9,7 @@ public class RetrofitClient {
     private static RetrofitClient instance = null;
     private static RetrofitService retrofitService;
 
-    private final static String BASE_URL = "http://43.200.85.14:8080/";
+    private final static String BASE_URL = "http://43.200.85.14:8086/";
 
     private RetrofitClient() {
         Retrofit retrofit = new Retrofit.Builder()

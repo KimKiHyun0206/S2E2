@@ -14,6 +14,9 @@ import com.example.s2e2.retrofit.Service.RetrofitService;
 import com.example.s2e2.retrofit.RetrofitClient;
 import com.example.s2e2.retrofit.domain.BloodDonation;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.LocalDateTime;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     //true면 메뉴바가 보이고 false면 보이지 않음
     private boolean menuBarOption = true;
     //마지막 헌혈한 날짜가 언제인지 저장하는 변수
-    private String blood_Donation_Date;
+    private LocalDateTime blood_Donation_Date;
 
     private RetrofitClient retrofitClient;
     private RetrofitService retrofitService;
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         retrofitClient = RetrofitClient.getInstance();
-        retrofitService = RetrofitClient.getRetrofitService();
+        retrofitService = retrofitClient.getRetrofitService();
         
         Call<BloodDonation> call = retrofitService.getBloodDonation(1L);
         
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("TEST","GET 성공성공");
                     Log.d("TEST", body.toString());
                     blood_Donation_Count = body.getBlood_Donation_Count();
-                    blood_Donation_Date = String.valueOf(body.getBlood_Donation_Date());
+                    blood_Donation_Date = body.getBlood_Donation_Date();
                     blood_Donation_Available_Date = body.getBlood_Donation_Available_Date();
                 }
             }
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getLastBloodDonationDay(){
-        return blood_Donation_Date;
+        return String.valueOf(blood_Donation_Date);
     }
 
     public int getBlood_Donation_Count() {
