@@ -23,6 +23,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.s2e2.retrofit.RetrofitClient;
+import com.example.s2e2.retrofit.Service.RetrofitService;
+import com.example.s2e2.retrofit.domain.BloodDonation;
+import com.example.s2e2.retrofit.dto.BloodDonationDTO;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -43,6 +47,9 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -68,6 +75,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Location location;
 
     private View mLayout;
+
+    private RetrofitClient retrofitClient;
+    private RetrofitService retrofitService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -397,6 +407,27 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     //화면 이동 메소드 - 메인페지이로, 헌혈횟수를 1 증가시킨다.
     public void completeAndGoTOMainPage(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        retrofitClient = RetrofitClient.getInstance();
+        retrofitService = RetrofitClient.getRetrofitService();
+
+        Call<BloodDonation> call = retrofitService.updateInfo(1L);
+
+        call.enqueue(new Callback<BloodDonation>() {
+            //버튼이아니라 맵 페이지가 뜨면 초기화되게 해놓을까?
+            @Override
+            public void onResponse(Call<BloodDonation> call, Response<BloodDonation> response) {
+                BloodDonation body = response.body();
+                Log.d(TAG, "onResponse: UpdateInfo() 완료");
+                Log.d(TAG, response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<BloodDonation> call, Throwable t) {
+
+            }
+        });
+
+
         startActivity(intent);
     }
 

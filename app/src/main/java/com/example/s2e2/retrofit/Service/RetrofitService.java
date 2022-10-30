@@ -14,6 +14,9 @@ public interface RetrofitService {
     @GET("/{id}")
     Call<BloodDonation> getInfo(@Path("id") Long id);
 
+    @GET("/update/{id}")
+    Call<BloodDonation> updateInfo(@Path("id") Long id);
+    //매개값을 하나
     @GET("헌혈의집 URL주소")
     Call<BloodDonationHouse> getBloodDonationHouse(@Query("serviceKey") String serviceKey,
                                                    @Query("id") Long id);
