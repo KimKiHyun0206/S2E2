@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.s2e2.retrofit.RetrofitClient;
 import com.example.s2e2.retrofit.Service.RetrofitService;
 import com.example.s2e2.retrofit.domain.BloodDonation;
+import com.example.s2e2.retrofit.domain.BloodDonationHouse;
 import com.example.s2e2.retrofit.dto.BloodDonationDTO;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -47,6 +48,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,6 +81,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private RetrofitClient retrofitClient;
     private RetrofitService retrofitService;
 
+
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +107,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         builder.addLocationRequest(locationRequest);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        Call<BloodDonationHouse> call = retrofitService.getInfo(1L);
+
+        call.enqueue(new Callback<BloodDonationHouse>() {
+            @Override
+            public void onResponse(Call<BloodDonationHouse> call, Response<BloodDonationHouse> response) {
+                if(response.isSuccessful()){
+                    BloodDonationHouse body = response.body();
+                    Log.d("TEST","GET 성공 = BloodHouse");
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BloodDonationHouse> call, Throwable t) {
+
+            }
+        });
 
 //        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
 //        .findFragmentById(R.id.map);
@@ -142,6 +167,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Log.d(TAG, "onMapClick");
             }
         });
+
     }
 
     LocationCallback locationCallback = new LocationCallback() {
@@ -431,7 +457,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-    private void bloodHouseMarker(String name, long latitude, long longitude) {
+    public void bloodHouseMarkers(BloodDonationHouse[] bloodDonationHouse) {
+        for (int i = 0; i < bloodDonationHouse.length; i++) {
+            bloodHouseMarker(bloodDonationHouse[i].getName(), bloodDonationHouse[i].getLatitude(), bloodDonationHouse[i].getLongitude());
+        }
+    }
+
+    private void bloodHouseMarker(String name, double latitude, double longitude) {
         LatLng latLng = new LatLng(latitude, longitude);
 
         MarkerOptions markerOptions = new MarkerOptions();

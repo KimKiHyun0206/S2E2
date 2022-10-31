@@ -13,15 +13,10 @@ public class BloodDonationHouseDTO {
     private String name;
 
     @Expose
-    @SerializedName("streetNameAddress")
-    private String streetNameAddress;
+    @SerializedName("latitude")
+    private double latitude;
 
-    @Override
-    public String toString() {
-        return "BloodDonationHouse{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", streetNameAddress='" + streetNameAddress + '\'' +
-                '}';
-    }
+    @Expose
+    @SerializedName("longitude")
+    private double longitude;
 }
