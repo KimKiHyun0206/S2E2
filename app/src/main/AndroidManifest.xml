@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <supports-screens android:largeScreens="true" android:anyDensity="true"/>
     <application
         android:allowBackup="true"
@@ -20,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.S2E2"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="33">
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/black_radius" />
@@ -47,7 +45,7 @@
             android:value="AIzaSyCNei4jTVZQUoO4oylpKEJyh0maKbY98hw" />
         <meta-data android:name="android.max_aspect" android:value="2.1" />
 
-
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.s2e2.retrofit.RetrofitClient;
 import com.example.s2e2.retrofit.Service.RetrofitService;
+import com.example.s2e2.retrofit.domain.BloodDonation;
 import com.example.s2e2.retrofit.domain.BloodDonationHouse;
 import com.example.s2e2.retrofit.domain.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -82,8 +83,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private List<BloodDonationHouse> bodyList;
 
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +113,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         retrofitService.updateInfo(status).enqueue(new Callback<Status>() {
             @Override
-            public void onResponse(@NonNull Call<Status> call,@NonNull Response<Status> response) {
+            public void onResponse(@NonNull Call<Status> call, @NonNull Response<Status> response) {
                 if (response.isSuccessful()) {
                     Status body = response.body();
                     Log.d(TAG, "onResponse: UpdateInfo() 완료");
@@ -138,6 +137,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 bodyList = response.body();
                 Log.d(TAG, "onResponse: 확인");
                 Log.d(TAG, bodyList.toString());
+                bloodHouseMarkers(bodyList);
             }
 
             @Override
@@ -148,11 +148,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-        .findFragmentById(R.id.map);
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
-
-
 
 
     @Override
@@ -189,7 +187,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 Log.d(TAG, "onMapClick");
             }
         });
-
     }
 
     LocationCallback locationCallback = new LocationCallback() {
@@ -343,7 +340,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
         currentMarker = mMap.addMarker(markerOptions);
 
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 13);
         mMap.moveCamera(cameraUpdate);
     }
 
@@ -458,10 +455,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-    public void bloodHouseMarkers(BloodDonationHouse[] bloodDonationHouse) {
-        for (int i = 0; i < bloodDonationHouse.length; i++) {
-            bloodHouseMarker(bloodDonationHouse[i].getName(), bloodDonationHouse[i].getLatitude(), bloodDonationHouse[i].getLongitude());
+    public void bloodHouseMarkers(List<BloodDonationHouse> bloodDonationHouses) {
+        for (BloodDonationHouse bh : bloodDonationHouses
+        ) {
+            bloodHouseMarker(bh.getName(), bh.getLongitude(), bh.getLatitude());
+            Log.d("house",bh.getName());
         }
+
     }
 
     private void bloodHouseMarker(String name, double latitude, double longitude) {
@@ -472,6 +472,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         markerOptions.title(name);
         markerOptions.snippet("헌혈의집");
         markerOptions.draggable(true);
+
+        currentMarker = mMap.addMarker(markerOptions);
     }
 
 
