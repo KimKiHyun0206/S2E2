@@ -8,16 +8,13 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.annotation.LongDef;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.s2e2.retrofit.Service.RetrofitService;
 import com.example.s2e2.retrofit.RetrofitClient;
 import com.example.s2e2.retrofit.domain.BloodDonation;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
-import java.time.LocalDateTime;
+import org.jetbrains.annotations.NotNull;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         retrofitClient = RetrofitClient.getInstance();
         retrofitService = RetrofitClient.getRetrofitService();
         
-        Call<BloodDonation> call = retrofitService.getInfo(1L);
-        
+        retrofit2.Call<BloodDonation> call = retrofitService.getInfo(1L);
+
         call.enqueue(new Callback<BloodDonation>() {
             @Override
-            public void onResponse(@NotNull Call<BloodDonation> call, @NotNull Response<BloodDonation> response) {
+            public void onResponse(@NotNull retrofit2.Call<BloodDonation> call, @NotNull Response<BloodDonation> response) {
                 if (response.isSuccessful()) {
                     BloodDonation body = response.body();
                     Log.d("TEST","GET 성공성공");

@@ -1,11 +1,5 @@
 package com.example.s2e2;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -23,10 +17,15 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.example.s2e2.retrofit.RetrofitClient;
 import com.example.s2e2.retrofit.Service.RetrofitService;
 import com.example.s2e2.retrofit.domain.BloodDonationHouse;
-import com.example.s2e2.retrofit.domain.BloodDonationHouses;
 import com.example.s2e2.retrofit.domain.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
