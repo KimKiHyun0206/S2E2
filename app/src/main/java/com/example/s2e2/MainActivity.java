@@ -89,10 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
     //화면 이동 메소드 - 지도 페이지
     public void goToMapPage(View view) {
-
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
-
     }
 
     //메뉴바를 보이게 하는 메소드

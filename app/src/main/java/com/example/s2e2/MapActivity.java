@@ -443,11 +443,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onPointerCaptureChanged(hasCapture);
     }
 
-    //화면 이동 메소드 - 메인페이지로
-    public void goToMainPage(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+
 
     //화면 이동 메소드 - 메인페지이로, 헌혈횟수를 1 증가시킨다.
     public void completeAndGoTOMainPage(View view) {

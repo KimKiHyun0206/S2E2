@@ -39,26 +39,10 @@
                     tools:context=".MapActivity" />
 
                 <Button
-                    android:id="@+id/toMain"
-                    android:layout_width="match_parent"
-                    android:layout_height="57dp"
-                    android:layout_marginTop="464dp"
-                    android:backgroundTint="@color/brown3"
-                    android:fontFamily="@font/acc"
-                    android:onClick="goToMainPage"
-                    android:text="메인으로"
-                    android:textColor="@color/brown1"
-                    android:textSize="70px"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
                     android:id="@+id/Complete"
-                    android:layout_width="match_parent"
+                    android:layout_width="282dp"
                     android:layout_height="57dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="528dp"
                     android:backgroundTint="@color/brown4"
                     android:fontFamily="@font/acc"
                     android:onClick="completeAndGoTOMainPage"
@@ -66,9 +50,8 @@
                     android:textColor="@color/brown1"
                     android:textSize="70px"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/toMain" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
