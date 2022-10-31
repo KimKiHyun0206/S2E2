@@ -30,16 +30,6 @@ public class BloodDonationHouse {
         return longitude;
     }
 
-    private void bloodHouseMarker(String name, long latitude, long longitude) {
-        LatLng latLng = new LatLng(latitude, longitude);
-
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title(name);
-        markerOptions.snippet("헌혈의집");
-        markerOptions.draggable(true);
-    }
-
     public Long getId() {
         return id;
     }

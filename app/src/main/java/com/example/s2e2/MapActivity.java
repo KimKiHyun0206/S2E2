@@ -25,9 +25,9 @@ import android.widget.Toast;
 
 import com.example.s2e2.retrofit.RetrofitClient;
 import com.example.s2e2.retrofit.Service.RetrofitService;
-import com.example.s2e2.retrofit.domain.BloodDonation;
 import com.example.s2e2.retrofit.domain.BloodDonationHouse;
-import com.example.s2e2.retrofit.dto.BloodDonationDTO;
+import com.example.s2e2.retrofit.domain.BloodDonationHouses;
+import com.example.s2e2.retrofit.domain.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -80,7 +80,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private RetrofitClient retrofitClient;
     private RetrofitService retrofitService;
-
+    private List<BloodDonationHouse> bodyList;
 
 
 
@@ -108,29 +108,53 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        Call<BloodDonationHouse> call = retrofitService.getInfo(1L);
+        retrofitClient = RetrofitClient.getInstance();
+        retrofitService = RetrofitClient.getRetrofitService();
 
-        call.enqueue(new Callback<BloodDonationHouse>() {
+        Status status = new Status("YES");
+
+        retrofitService.updateInfo(status).enqueue(new Callback<>() {
+            //버튼이아니라 맵 페이지가 뜨면 초기화되게 해놓을까?
             @Override
-            public void onResponse(Call<BloodDonationHouse> call, Response<BloodDonationHouse> response) {
-                if(response.isSuccessful()){
-                    BloodDonationHouse body = response.body();
-                    Log.d("TEST","GET 성공 = BloodHouse");
-
-
+            public void onResponse(@NonNull Call<Status> call,@NonNull Response<Status> response) {
+                if (response.isSuccessful()) {
+                    Status body = response.body();
+                    Log.d(TAG, "onResponse: UpdateInfo() 완료");
+                    Log.d("TEST", body.toString());
                 }
             }
 
             @Override
-            public void onFailure(Call<BloodDonationHouse> call, Throwable t) {
-
+            public void onFailure(Call<Status> call, Throwable t) {
+                Log.d(TAG, "onFailure: 실패실패!");
             }
         });
 
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//        .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
+        //-------------------------------------------------
+
+        Call<List<BloodDonationHouse>> call = retrofitService.getBloodDonationHouse();
+
+        call.enqueue(new Callback<List<BloodDonationHouse>>() {
+            @Override
+            public void onResponse(Call<List<BloodDonationHouse>> call, Response<List<BloodDonationHouse>> response) {
+                bodyList = response.body();
+                Log.d(TAG, "onResponse: 확인");
+                Log.d(TAG, bodyList.toString());
+            }
+
+            @Override
+            public void onFailure(Call<List<BloodDonationHouse>> call, Throwable t) {
+                Log.d(TAG, "onFailure: 실패실패");
+                t.printStackTrace();
+            }
+        });
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
+
+
 
 
     @Override
@@ -433,27 +457,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     //화면 이동 메소드 - 메인페지이로, 헌혈횟수를 1 증가시킨다.
     public void completeAndGoTOMainPage(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        retrofitClient = RetrofitClient.getInstance();
-        retrofitService = RetrofitClient.getRetrofitService();
-
-        Call<BloodDonation> call = retrofitService.updateInfo(1L);
-
-        call.enqueue(new Callback<BloodDonation>() {
-            //버튼이아니라 맵 페이지가 뜨면 초기화되게 해놓을까?
-            @Override
-            public void onResponse(Call<BloodDonation> call, Response<BloodDonation> response) {
-                BloodDonation body = response.body();
-                Log.d(TAG, "onResponse: UpdateInfo() 완료");
-                Log.d(TAG, response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<BloodDonation> call, Throwable t) {
-
-            }
-        });
-
-
         startActivity(intent);
     }
 

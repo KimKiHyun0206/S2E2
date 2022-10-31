@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     BloodDonation body = response.body();
                     Log.d("TEST","GET 성공성공");
-                    Log.d("TEST", response.body().toString());
-                    blood_Donation_Count[0] = response.body().getCount();
-                    blood_Donation_Available_Date[0] = response.body().getAvailableDate();
-                    blood_Donation_Date[0] = response.body().getDate();
+                    Log.d("TEST", body.toString());
+                    blood_Donation_Count[0] = body.getCount();
+                    blood_Donation_Available_Date[0] = body.getAvailableDate();
+                    blood_Donation_Date[0] = body.getDate();
 
                     Button dDayButton = findViewById(R.id.countLastDayButton);
 
