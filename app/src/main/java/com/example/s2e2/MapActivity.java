@@ -113,8 +113,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         Status status = new Status("YES");
 
-        retrofitService.updateInfo(status).enqueue(new Callback<>() {
-            //버튼이아니라 맵 페이지가 뜨면 초기화되게 해놓을까?
+        retrofitService.updateInfo(status).enqueue(new Callback<Status>() {
             @Override
             public void onResponse(@NonNull Call<Status> call,@NonNull Response<Status> response) {
                 if (response.isSuccessful()) {
