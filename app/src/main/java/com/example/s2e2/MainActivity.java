@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RetrofitClient retrofitClient;
     private RetrofitService retrofitService;
-
+    int passDay;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     dDayButton.setText(dDayButtonShow(blood_Donation_Available_Date[0]));
                     lastBloodDonationDay.setText(String.valueOf(blood_Donation_Date[0]));
                     countBloodDonation.setText(String.valueOf(blood_Donation_Count[0]));
-
+                    passDay = blood_Donation_Available_Date[0];
                 }
             }
             @Override
@@ -82,15 +82,17 @@ public class MainActivity extends AppCompatActivity {
 
     private String dDayButtonShow(int blood_Donation_Available_Date){
         if(blood_Donation_Available_Date <=0){
-            return "D-Day";
+            return "오늘이야!";
         }
         return blood_Donation_Available_Date +"-Day";
     }
 
     //화면 이동 메소드 - 지도 페이지
     public void goToMapPage(View view) {
+        if(passDay<=0){
             Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
+        }
     }
 
     //메뉴바를 보이게 하는 메소드
